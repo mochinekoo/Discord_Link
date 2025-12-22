@@ -18,11 +18,12 @@ public class VerifyManager {
         verifyMap.put(player.getUniqueId(), new Verify(player));
     }
 
-    public static void stopVerify(UUID uuid, String code) {
+    public static boolean stopVerify(UUID uuid, String code) {
         Verify verify = verifyMap.get(uuid);
         if (verify != null) {
-            verify.stopVerify(code);
+            return verify.stopVerify(code);
         }
+        return false;
     }
 
     @Nullable
@@ -60,11 +61,13 @@ public class VerifyManager {
             code = String.format("%04d", random.nextInt(1000));
         }
 
-        public void stopVerify(String code) {
+        public boolean stopVerify(String code) {
             if (this.code.equalsIgnoreCase(code)) {
                 player.setWhitelisted(true);
                 this.task.cancel();
+                return true;
             }
+            return false;
         }
 
         public OfflinePlayer getPlayer() {

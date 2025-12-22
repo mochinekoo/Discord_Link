@@ -1,6 +1,7 @@
 package mochineko.discord_link.manager;
 
 import mochineko.discord_link.Main;
+import mochineko.discord_link.command.discord.DiscordJoinCommand;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -22,13 +23,14 @@ public class DiscordManager extends ListenerAdapter {
             jda = JDABuilder.createDefault(token)
                     .enableIntents(GatewayIntent.GUILD_MEMBERS, GatewayIntent.MESSAGE_CONTENT, GatewayIntent.GUILD_MESSAGES)
                     .addEventListeners(new DiscordManager())
+                    .addEventListeners(new DiscordJoinCommand())
                     .build();
 
             jda.updateCommands()
                     .addCommands(Commands.slash("server-join", "サーバーに参加するコマンド")
                             .addOptions(
                                     new OptionData(OptionType.STRING, "mcid", "マインクラフトID"),
-                                    new OptionData(OptionType.INTEGER, "code", "認証コード")
+                                    new OptionData(OptionType.STRING, "code", "認証コード")
                             )
                     )
                     .queue();
