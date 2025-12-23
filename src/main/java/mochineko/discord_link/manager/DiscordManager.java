@@ -51,4 +51,8 @@ public class DiscordManager extends ListenerAdapter {
         }
     }
 
+    public static JDA getJda() {
+        return jda;
+    }
+
 }

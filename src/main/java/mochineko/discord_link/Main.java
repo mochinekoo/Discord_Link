@@ -1,6 +1,7 @@
 package mochineko.discord_link;
 
-import mochineko.discord_link.listener.PlayerLoginListener;
+import mochineko.discord_link.listener.minecraft.PlayerChatListener;
+import mochineko.discord_link.listener.minecraft.PlayerLoginListener;
 import mochineko.discord_link.manager.DiscordManager;
 import mochineko.discord_link.manager.JsonManager;
 import mochineko.discord_link.status.FileType;
@@ -14,6 +15,7 @@ public final class Main extends JavaPlugin {
         //リスナー登録
         PluginManager plm = getServer().getPluginManager();
         plm.registerEvents(new PlayerLoginListener(), this);
+        plm.registerEvents(new PlayerChatListener(), this);
 
         saveDefaultConfig(); //デフォルトConfigを生成
         DiscordManager.startBot(); //discordBotを起動

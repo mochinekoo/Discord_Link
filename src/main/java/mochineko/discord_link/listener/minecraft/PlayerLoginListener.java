@@ -1,11 +1,10 @@
-package mochineko.discord_link.listener;
+package mochineko.discord_link.listener.minecraft;
 
 import mochineko.discord_link.manager.VerifyManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
-import org.checkerframework.checker.nullness.qual.Nullable;
 
 public class PlayerLoginListener implements Listener {
 
