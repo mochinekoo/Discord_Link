@@ -20,8 +20,9 @@ public class PlayerChatListener implements Listener {
         long sendChannelID = config.getLong("send_channelID");
         JDA jda = DiscordManager.getJda();
         if (config.contains("send_channelID")) {
+            final String format = "<" + player.getName() + ">" + " : " + event.getMessage();
             TextChannel sendChannel = jda.getChannelById(TextChannel.class, sendChannelID);
-            sendChannel.sendMessage(event.getMessage()).queue();
+            sendChannel.sendMessage(format).queue();
         }
     }
 
