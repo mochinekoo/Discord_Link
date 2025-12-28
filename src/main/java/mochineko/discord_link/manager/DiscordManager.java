@@ -2,6 +2,7 @@ package mochineko.discord_link.manager;
 
 import mochineko.discord_link.Main;
 import mochineko.discord_link.command.discord.DiscordJoinCommand;
+import mochineko.discord_link.listener.discord.MessageListener;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -24,6 +25,7 @@ public class DiscordManager extends ListenerAdapter {
                     .enableIntents(GatewayIntent.GUILD_MEMBERS, GatewayIntent.MESSAGE_CONTENT, GatewayIntent.GUILD_MESSAGES)
                     .addEventListeners(new DiscordManager())
                     .addEventListeners(new DiscordJoinCommand())
+                    .addEventListeners(new MessageListener())
                     .build();
 
             jda.updateCommands()
