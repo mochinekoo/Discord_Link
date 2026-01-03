@@ -3,6 +3,7 @@ package mochineko.discord_link.manager;
 import mochineko.discord_link.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
@@ -12,6 +13,8 @@ import java.util.*;
 
 public class VerifyManager {
 
+    private static final Main plugin = Main.getPlugin(Main.class);
+    private static final FileConfiguration config = plugin.getConfig();
     private static final Map<UUID, Verify> verifyMap = new HashMap<>();
 
     public static void startVerify(Player player) {
@@ -33,6 +36,17 @@ public class VerifyManager {
 
     public static boolean containVerify(OfflinePlayer player) {
         return verifyMap.containsKey(player.getUniqueId());
+    }
+
+    public static String getVerifySaveType() {
+        String saveType = config.getString("verify_save_type");
+        if (saveType == null || (!saveType.equalsIgnoreCase("JSON") && !saveType.equalsIgnoreCase("SQL"))) {
+            config.set("verify_save_type", "JSON");
+            plugin.saveConfig();
+            return "JSON";
+        }
+
+        return saveType;
     }
 
     public static class Verify {

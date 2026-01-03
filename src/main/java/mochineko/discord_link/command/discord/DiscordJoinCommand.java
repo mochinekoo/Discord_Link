@@ -1,5 +1,6 @@
 package mochineko.discord_link.command.discord;
 
+import mochineko.discord_link.manager.SQLManager;
 import mochineko.discord_link.manager.VerifyManager;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
@@ -26,6 +27,7 @@ public class DiscordJoinCommand extends ListenerAdapter {
                 EmbedBuilder emebed = new EmbedBuilder();
                 if (result) {
                     emebed.addField("成功", "認証に成功しました", true);
+                    SQLManager.getInstance().addData(player.getUniqueId(), member.getIdLong());
                 }
                 else {
                     emebed.addField("失敗", "認証に失敗しました", true);

@@ -1,2 +1,13 @@
 bot_token: ""
 send_channelID:
+
+# 認証データの保存先。「JSON」か「SQL」を選べます。それ以外を入力した場合は、「JSON」になります。
+verify_data_type: "JSON"
+
+# データベースの接続先（データベース名を指定しなかった場合、「DiscordLink」になります。）
+database:
+  host: localhost
+  port: 3306
+  user_id:
+  user_password:
+  database_name: "DiscordLink"
