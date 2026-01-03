@@ -1,4 +1,4 @@
 package mochineko.discord_link.manager;
 
-public interface DeserializedJson {
+public interface DeserializedData {
 }

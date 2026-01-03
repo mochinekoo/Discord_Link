@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.UUID;
 
-public class DiscordLinkData implements DeserializedJson {
+public class DiscordLinkData implements DeserializedData {
 
     private Map<String, LinkData> linkDataMap;
 

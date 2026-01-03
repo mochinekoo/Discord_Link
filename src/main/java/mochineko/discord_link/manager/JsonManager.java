@@ -39,7 +39,7 @@ public class JsonManager {
     /**
      *　デシリアライズしたJSONとして返す
      */
-    public DeserializedJson getDeserializedJson() {
+    public DeserializedData getDeserializedJson() {
         return gson.fromJson(getRawElement(), type.getDeserializedClass());
     }
 
