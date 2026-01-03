@@ -4,6 +4,12 @@ send_channelID:
 # 認証データの保存先。「JSON」か「SQL」を選べます。それ以外を入力した場合は、「JSON」になります。
 verify_data_type: "JSON"
 
+# 表示のフォーマット
+# 利用可能なフォーマット：カラーコード、{%PluginPrefix}、{%Name}、{%Message}
+format:
+  minecraft_message: "§b[Discord]§f<{%Name}>: {%Message}"
+  discord_message: "<{%Name}>: {%Message}"
+
 # データベースの接続先（データベース名を指定しなかった場合、「DiscordLink」になります。）
 database:
   host: localhost
